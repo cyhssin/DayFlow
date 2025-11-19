@@ -1,0 +1,34 @@
+from pydantic import BaseModel, EmailStr
+
+class UserBase(BaseModel):
+    username: str
+    email: str
+
+class UserCreate(UserBase):
+    password: str
+
+class UserOut(UserBase):
+    id: int
+    is_active: bool
+
+    class Config:
+        orm_mode = True
+
+class UserLogin(BaseModel):
+    username: str
+    password: str
+
+class UserResponse(UserOut):
+    pass
+
+class Token(BaseModel):
+    access_token: str
+    token_type: str
+
+class PasswordResetRequest(BaseModel):
+    email: EmailStr
+
+class PasswordResetConfirm(BaseModel):
+    email: EmailStr
+    code: str
+    new_password: str

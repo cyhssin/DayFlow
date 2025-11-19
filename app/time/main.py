@@ -1,9 +1,11 @@
 from fastapi import FastAPI
-from app.time.routes import schedules  # ✅ Updated
+from app.time.routes import schedules
+
+from shared.database.session import create_tables
 
 app = FastAPI(title="Timely - Time Tracking Service")
 
-app.include_router(schedules.router)  # ✅ This should work now
+app.include_router(schedules.router)
 
 @app.get("/")
 def read_root():

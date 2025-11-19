@@ -4,7 +4,11 @@ from sqlalchemy.orm import sessionmaker
 from shared.database.base import Base
 from dotenv import load_dotenv
 
-load_dotenv()
+from app.user.models import User
+from app.todo.models import Todo
+from app.time.models import Schedule
+
+load_dotenv() 
 
 DATABASE_URL = os.getenv("DATABASE_URL")
 
